@@ -54,7 +54,7 @@ MODULE_CONFARGS_image_filter=	--with-http_image_filter_module=dynamic
 MODULE_CONFARGS_njs=		--add-dynamic-module=njs-$(MODULE_VERSION_njs)/nginx
 MODULE_CONFARGS_perl=		--with-http_perl_module=dynamic
 MODULE_CONFARGS_xslt=		--with-http_xslt_module=dynamic
-MODULE_CONFARGS_rtmp=		--add-dynamic-module=nginx-rtmp-module-$(MODULE_VERSION_rtmp)/
+MODULE_CONFARGS_rtmp=		--add-dynamic-module=nginx-rtmp-module-$(MODULE_VERSION_rtmp)
 
 # geoip
 
