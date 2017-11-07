@@ -1,0 +1,12 @@
+BUILD/
+RPMS/
+BUILDROOT/
+SPECS/*.spec
+SOURCES/nginx-*.tar.gz
+SPECS/base
+SPECS/module-geoip
+SPECS/module-image-filter
+SPECS/module-njs
+SPECS/module-perl
+SPECS/module-xslt
+SRPMS/
