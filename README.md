@@ -9,14 +9,13 @@
 2. 安装相关软件包
 
    ```shell
+      yum groupinstall -y "Development tools"
       yum install -y epel-release
       yum install -y git
-      yum groupinstall -y "Development tools"
-      yum install openssl-devel zlib-devel pcre-devel
+      yum install -y openssl-devel zlib-devel pcre-devel
       yum install -y wget
-      yum search lsb_release
-      yum install redhat-lsb-core
-      yum install GeoIP-devel
+      yum install -y redhat-lsb-core
+      yum install -y GeoIP-devel
       yum install -y gd-devel
       yum install -y libedit-devel
       yum install -y perl-devel perl-ExtUtils-Embed
