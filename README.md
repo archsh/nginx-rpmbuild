@@ -8,7 +8,7 @@
 
 2. 安装相关软件包
 
-   ```
+   ```shell
       yum install -y epel-release
       yum install -y git
       yum groupinstall -y "Development tools"
@@ -27,7 +27,7 @@
 
 3. 下载Nginx RPM Source
 
-   ```
+   ```shell
    wget http://hg.nginx.org/pkg-oss/archive/1.12.2-1.zip
    ```
 
