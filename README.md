@@ -106,3 +106,11 @@ export MODULE_POST_rtmp
    rpm -Uvh nginx-*
 ```
 
+
+## firewall-cmd open port for access
+
+```shell
+   firewall-cmd --zone=public --add-port=80/tcp --permanent
+   firewall-cmd --zone=public --add-port=1935/tcp --permanent
+   firewall-cmd --reload
+```
