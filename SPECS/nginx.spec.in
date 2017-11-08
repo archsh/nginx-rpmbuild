@@ -138,12 +138,13 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 %{__install} -m 644 -p %{SOURCE12} \
     $RPM_BUILD_ROOT%{_datadir}/doc/%{name}-%{main_version}/
 
-%{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d
+%{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/nginx/sites.d
+%{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/nginx/modules.d
 %{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/nginx.conf
 %{__install} -m 644 -p %{SOURCE4} \
     $RPM_BUILD_ROOT%{_sysconfdir}/nginx/nginx.conf
 %{__install} -m 644 -p %{SOURCE5} \
-    $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/default.conf
+    $RPM_BUILD_ROOT%{_sysconfdir}/nginx/sites.d/default.conf
 
 %{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
 %{__install} -m 644 -p %{SOURCE3} \
@@ -196,11 +197,12 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 %{_sbindir}/nginx-debug
 
 %dir %{_sysconfdir}/nginx
-%dir %{_sysconfdir}/nginx/conf.d
+%dir %{_sysconfdir}/nginx/sites.d
+%dir %{_sysconfdir}/nginx/modules.d
 %{_sysconfdir}/nginx/modules
 
 %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
-%config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
+%config(noreplace) %{_sysconfdir}/nginx/sites.d/default.conf
 %config(noreplace) %{_sysconfdir}/nginx/mime.types
 %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
 %config(noreplace) %{_sysconfdir}/nginx/scgi_params
@@ -593,7 +595,7 @@ fi
 
 * Tue Aug 30 2011 Sergey Budnevitch <sb@nginx.com>
 - 1.0.6
-- replace "conf.d/*" config include with "conf.d/*.conf" in default nginx.conf
+- replace "sites.d/*" config include with "sites.d/*.conf" in default nginx.conf
 
 * Wed Aug 10 2011 Sergey Budnevitch
 - Initial release
