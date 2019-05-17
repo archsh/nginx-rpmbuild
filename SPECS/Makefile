@@ -22,7 +22,7 @@ MODULE_PACKAGE_VENDOR=	Nginx, Inc.
 MODULE_PACKAGE_URL=	http://nginx.org/
 MODULE_PACKAGE_LICENSE=2-clause BSD-like license
 
-MODULES=	geoip image-filter njs perl xslt rtmp
+MODULES=	geoip image-filter njs perl xslt rtmp vod
 
 -include Makefile.module-*
 
@@ -32,6 +32,7 @@ MODULE_SUMMARY_njs=		nginScript dynamic modules
 MODULE_SUMMARY_perl=		Perl dynamic module
 MODULE_SUMMARY_xslt=		xslt dynamic module
 MODULE_SUMMARY_rtmp=	RTMP dynamic module
+MODULE_SUMMARY_vod=	NGINX-based MP4 Repackager
 
 MODULE_VERSION_geoip=		$(BASE_VERSION)
 MODULE_RELEASE_geoip=		1
@@ -45,9 +46,12 @@ MODULE_VERSION_xslt=		$(BASE_VERSION)
 MODULE_RELEASE_xslt=		1
 MODULE_VERSION_rtmp=	1.2.0
 MODULE_RELEASE_rtmp=		1
+MODULE_VERSION_vod= 	1.24
+MODULE_RELEASE_vod=		1
 
 MODULE_SOURCES_njs=		njs-$(MODULE_VERSION_njs).tar.gz
 MODULE_SOURCES_rtmp=	rtmp-v$(MODULE_VERSION_rtmp).tar.gz
+MODULE_SOURCES_vod=		nginx-vod-module-$(MODULE_VERSION_vod).tar.gz
 MODULE_CONFARGS_geoip=		--with-http_geoip_module=dynamic \
 				--with-stream_geoip_module=dynamic
 MODULE_CONFARGS_image_filter=	--with-http_image_filter_module=dynamic
@@ -55,6 +59,9 @@ MODULE_CONFARGS_njs=		--add-dynamic-module=njs-$(MODULE_VERSION_njs)/nginx
 MODULE_CONFARGS_perl=		--with-http_perl_module=dynamic
 MODULE_CONFARGS_xslt=		--with-http_xslt_module=dynamic
 MODULE_CONFARGS_rtmp=		--add-dynamic-module=nginx-rtmp-module-$(MODULE_VERSION_rtmp)
+MODULE_CONFARGS_vod=		--add-dynamic-module=%{_builddir}/%{name}-%{version}/nginx-vod-module-$(MODULE_VERSION_vod) \
+			    --with-http_flv_module \
+			    --with-http_mp4_module
 
 # geoip
 
@@ -264,6 +271,31 @@ http://nginx.org/en/docs/http/ngx_rtmp_module.html
 BANNER
 endef
 export MODULE_POST_rtmp
+
+# vod
+
+define MODULE_DEFINITIONS_vod
+
+endef
+export MODULE_DEFINITIONS_vod
+
+define MODULE_POST_vod
+cat <<BANNER
+----------------------------------------------------------------------
+
+The $(MODULE_SUMMARY_vod) for nginx has been installed.
+To enable this module, add the following to /etc/nginx/nginx.conf
+and reload nginx:
+
+    load_module modules/ngx_vod_module.so;
+
+Please refer to the module documentation for further details:
+http://nginx.org/en/docs/http/ngx_vod_module.html
+
+----------------------------------------------------------------------
+BANNER
+endef
+export MODULE_POST_vod
 
 
 BASE_CONFIGURE_ARGS=\
