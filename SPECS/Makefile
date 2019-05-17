@@ -59,7 +59,7 @@ MODULE_CONFARGS_njs=		--add-dynamic-module=njs-$(MODULE_VERSION_njs)/nginx
 MODULE_CONFARGS_perl=		--with-http_perl_module=dynamic
 MODULE_CONFARGS_xslt=		--with-http_xslt_module=dynamic
 MODULE_CONFARGS_rtmp=		--add-dynamic-module=nginx-rtmp-module-$(MODULE_VERSION_rtmp)
-MODULE_CONFARGS_vod=		--add-dynamic-module=%{_builddir}/%{name}-%{version}/nginx-vod-module-$(MODULE_VERSION_vod) \
+MODULE_CONFARGS_vod=		--add-dynamic-module=nginx-vod-module-$(MODULE_VERSION_vod) \
 			    --with-http_flv_module \
 			    --with-http_mp4_module
 
