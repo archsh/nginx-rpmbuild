@@ -287,10 +287,10 @@ The $(MODULE_SUMMARY_vod) for nginx has been installed.
 To enable this module, add the following to /etc/nginx/nginx.conf
 and reload nginx:
 
-    load_module modules/ngx_vod_module.so;
+    load_module modules/ngx_http_vod_module.so;
 
 Please refer to the module documentation for further details:
-http://nginx.org/en/docs/http/ngx_vod_module.html
+http://nginx.org/en/docs/http/ngx_http_vod_module.html
 
 ----------------------------------------------------------------------
 BANNER
